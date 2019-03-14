@@ -16,6 +16,9 @@ class Dish < ApplicationRecord
   has_many   :fans,
              :through => :bookmarks,
              :source => :user
+             
+  has_many  :venues,
+            :through => :bookmarks
 
   # Validations
 
