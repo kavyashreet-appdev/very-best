@@ -96,12 +96,20 @@
           </a>
         </td>
         <td>
-          <% if dish.venues.present? %>
+          <% if dish.bookmarks.present? %>
             <a href="/venues/<%= dish.venues.ids.first%>">
               <%= dish.venues.first.name %>
             </a>
           <% else %>
-          
+          <form action="/create_bookmark" method="post">
+            <%= select_tag("venue_id", options_from_collection_for_select(Venue.all, :id, :name), :class => "form-control-sm", :placeholder => "Choose a venue") %>
+            <input type="hidden" name="dish_id" value="<%= dish.id %>">
+            <input type="hidden" name="user_id" value="<%= current_user.id %>">
+            <input type="hidden" name="notes" value="">
+            <button class="btn-sm btn-primary">
+              <i class="fa fa-heart"></i>
+            </button>
+          </form>
           <% end %>
         </td>
         <td>
