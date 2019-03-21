@@ -44,7 +44,9 @@
 
       <% @venues.each do |venue| %>
       <li class="list-group-item">
+        <a href="/venues/<%= venue.id %>">
         <%= venue.name %>
+        </a>
           <% if venue.neighborhood.present? %>
             <a class="float-right text-muted small">
               <%= venue.neighborhood.name %>
